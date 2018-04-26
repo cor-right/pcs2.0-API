@@ -1,4 +1,4 @@
-package org.softlab.core.model.vo;
+package org.softlab.core.vo;
 
 
 import org.softlab.core.model.Paper;

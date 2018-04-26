@@ -9,25 +9,32 @@ import org.slf4j.LoggerFactory;
 import org.softlab.biz.manager.Solr;
 import org.softlab.biz.service.SolrService;
 import org.softlab.common.constant.PageConfig;
+import org.softlab.core.mapper.SourceMapper;
 import org.softlab.core.model.Paper;
 import org.softlab.core.model.PestInfo;
-import org.softlab.core.model.vo.PaperVo;
+import org.softlab.core.vo.PaperVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * created by Jiaxu_Zou on 2017-12-09
+ * Created by Jiaxu_Zou on 2017-12-09
  */
 @Service
 public class SolrServiceImpl implements SolrService {
 
+	// solr dao
 	private Solr solr;
-	
+
+	// mapper
+	private final SourceMapper sourceMapper;
+
+	// logger
 	private static final Logger logger = LoggerFactory.getLogger(SolrServiceImpl.class);
 	
 	@Autowired
-	public SolrServiceImpl (Solr solr) {
+	public SolrServiceImpl(Solr solr, SourceMapper sourceMapper) {
 		this.solr = solr;
+		this.sourceMapper = sourceMapper;
 	}
 
 	@Override
@@ -67,5 +74,7 @@ public class SolrServiceImpl implements SolrService {
 		}
 		return vo;
 	}
-	
+
+
+
 }

@@ -36,7 +36,7 @@ public class Solr {
 	 */
 	public Integer selectPaperCount(String word) throws SolrServerException, IOException {
 		SolrQuery solrQuery = new SolrQuery();
-		solrQuery.setQuery("record_keyword:*" + word +"*\r\nrecord_title:*" + word + "*");
+		solrQuery.setQuery("record_keyword:*" + word +"*\r\nrecord_title:*" + word + "*"+"*\r\nrecord_summary:*" + word + "*");
 		QueryResponse qr = solrServer.query(solrQuery);
 		SolrDocumentList resultList = qr.getResults();
 		System.out.println(resultList.getNumFound());
@@ -49,9 +49,10 @@ public class Solr {
 	 */
 	public Map<String, Object> selectPapersData(String word, Integer page) throws SolrServerException, IOException {
 		Map<String, Object> data = new HashMap<>();
+		System.out.println("!!! " + word);
 		// query
 		SolrQuery solrQuery = new SolrQuery();
-		solrQuery.setQuery("record_keyword:*" + word +"*\r\nrecord_title:*" + word + "*");
+		solrQuery.setQuery("record_keyword:*" + word +"*\r\nrecord_title:*" + word + "*"+"*\r\nrecord_summary:*" + word + "*");
 		solrQuery.setStart((page - 1) * PageConfig.PAPER_LIST_PAGESIZE );
 		solrQuery.setRows(PageConfig.PAPER_LIST_PAGESIZE);
 		QueryResponse qr = solrServer.query(solrQuery);

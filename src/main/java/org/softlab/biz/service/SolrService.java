@@ -2,7 +2,7 @@ package org.softlab.biz.service;
 
 
 import org.softlab.core.model.PestInfo;
-import org.softlab.core.model.vo.PaperVo;
+import org.softlab.core.vo.PaperVo;
 
 import java.util.List;
 
@@ -20,6 +20,8 @@ public interface SolrService {
 	 * select papers about a specific living
 	 */
 	PaperVo selectPapers(String content, String curPage);
+
+
 
 	
 	
